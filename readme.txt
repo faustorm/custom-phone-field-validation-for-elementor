@@ -9,8 +9,6 @@ Stable tag: 4.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
  
-Here is a short description of the plugin.  This should be no more than 150 characters.  No markup here.
- 
 == Description ==
  
 This pluging is made to override the normal functionality of the "tel" field form validation for Elementor, it just changes the regex used to make this validation.
@@ -19,11 +17,7 @@ For now, you must change manually the regex for your desired one. This plugin co
 
  
 == Installation ==
- 
-This section describes how to install the plugin and get it working.
- 
-e.g.
- 
+
 1. Clone this repository into your `/wp-content/plugins/` directory
 1. Customize the regex code into `custom-phone-field-validation-for-elementor.php`
 1. Customize the langs into `custom-phone-field-validation-for-elementor.php`
