@@ -23,8 +23,8 @@ add_action( 'elementor_pro/forms/validation/tel', function( $field, $record, $aj
 		return;
 	}
 	// Match this format XXX-XXX-XXXX, 123-456-7890
-	if ( preg_match( '/[0-9]{3}(-?)[0-9]{3}(-?)[0-9]{4}/', $field['value'] ) !== 1 ) {
-		$ajax_handler->add_error( $field['id'], 'Please make sure the phone number is in XXX-XXX-XXXX format, eg: 123-456-7890' );
+	if ( preg_match( '/[0-9]{9}/', $field['value'] ) !== 1 ) {
+		$ajax_handler->add_error( $field['id'], 'Por favor, asegúrate de introducir sólo números, sin espacios ni prefijo, formato: XXXXXXXXX' );
 	}
 }, 9, 3 );
 
@@ -38,7 +38,7 @@ add_action( 'elementor_pro/forms/render_field/tel', function( $item, $item_index
 
 	// add your custom render ex:
 	$form->add_render_attribute( 'input' . $item_index, 'class', 'elementor-field-textual' );
-	$form->add_render_attribute( 'input' . $item_index, 'pattern', '[0-9]{3}(-?)[0-9]{3}(-?)[0-9]{4}' );
-	$form->add_render_attribute( 'input' . $item_index, 'title', __( 'Number should be in this format xxx-xxx-xxxx.', 'plugin-name' ) );
+	$form->add_render_attribute( 'input' . $item_index, 'pattern', '[0-9]{6}' );
+	$form->add_render_attribute( 'input' . $item_index, 'title', __( 'El teléfono debe estar en formato XXXXXXXXX', 'custom-phone-field-validation-for-elementor' ) );
 	echo '<input size="1" ' . $form->get_render_attribute_string( 'input' . $item_index ) . '>';
 }, 9, 3 );
