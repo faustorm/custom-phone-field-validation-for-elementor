@@ -18,11 +18,11 @@ add_action( 'elementor_pro/forms/validation/tel', function( $field, $record, $aj
 	$forms_module = \ElementorPro\Plugin::instance()->modules_manager->get_modules( 'forms' );
 	remove_action( 'elementor_pro/forms/validation/tel', [ $forms_module->field_types['tel'], 'validation' ] );
 
-	// run your own validation, ex:
+	// run custom validation:
 	if ( empty( $field['value'] ) ) {
 		return;
 	}
-	// Match this format XXX-XXX-XXXX, 123-456-7890
+	
 	if ( preg_match( '/[6|7][0-9]{8}/', $field['value'] ) !== 1 ) {
 		$ajax_handler->add_error( $field['id'], 'Por favor, asegúrate de introducir sólo números, sin espacios ni prefijo, formato: XXXXXXXXX' );
 	}
@@ -36,7 +36,7 @@ add_action( 'elementor_pro/forms/render_field/tel', function( $item, $item_index
 	$forms_module = \ElementorPro\Plugin::instance()->modules_manager->get_modules( 'forms' );
 	remove_action( 'elementor_pro/forms/render_field/tel', [$forms_module->field_types['tel'] , 'field_render' ], 10, 3 );
 
-	// add your custom render ex:
+	// add custom render:
 	$form->add_render_attribute( 'input' . $item_index, 'class', 'elementor-field-textual' );
 	$form->add_render_attribute( 'input' . $item_index, 'pattern', '[6|7][0-9]{8}' );
 	$form->add_render_attribute( 'input' . $item_index, 'title', __( 'El teléfono debe tener formato XXXXXXXXX (9 dígitos, sin espacios ni prefijos y debe ser un teléfono móvil)', 'custom-phone-field-validation-for-elementor' ) );
